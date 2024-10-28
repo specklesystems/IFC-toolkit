@@ -34,7 +34,7 @@ int OpenModel(webifc::manager::LoaderSettings settings, emscripten::val callback
 {
     auto modelID = manager.CreateModel(settings);
     const std::function<uint32_t(char *, size_t, size_t)> loaderFunc= [callback](char* dest, size_t sourceOffset, size_t destSize) {    
-        emscripten::val retVal = callback((uint32_t)dest,sourceOffset, destSize);
+        emscripten::val retVal = callback(static_cast<uint32_t>(reinterpret_cast<intptr_t>(dest)), sourceOffset, destSize);
         uint32_t len = retVal.as<uint32_t>();
         return len;
     };
@@ -48,7 +48,7 @@ void SaveModel(uint32_t modelID, emscripten::val callback)
     if (!manager.IsModelOpen(modelID)) return;
     manager.GetIfcLoader(modelID)->SaveFile([&](char* src, size_t srcSize)
         {
-            emscripten::val retVal = callback((uint32_t)src, srcSize);
+            emscripten::val retVal = callback(static_cast<uint32_t>(reinterpret_cast<intptr_t>(src)), srcSize);
         }
     );
 }

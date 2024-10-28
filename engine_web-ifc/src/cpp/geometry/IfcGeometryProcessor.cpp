@@ -8,6 +8,8 @@
 #include "../test/io_helpers.h"
 #endif
 
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include "IfcGeometryProcessor.h"
 #include <glm/gtx/transform.hpp>
 #include "representation/geometry.h"
