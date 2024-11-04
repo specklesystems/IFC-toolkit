@@ -59,8 +59,6 @@ set(SourceFiles
 	${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/schema/IfcSchemaManager.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/schema/schema-functions.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/version.h
-	${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/web-ifc-test.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/web-ifc-wasm.cpp
 )
 set(HeaderFiles
 	${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt

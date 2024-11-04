@@ -21,6 +21,7 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/mapbox/earcut.hpp.git
   GIT_TAG        v2.2.4
   FIND_PACKAGE_ARGS NAMES earcut
+  SOURCE_SUBDIR include
 )
 FetchContent_Declare(
   tinynurbs
@@ -51,6 +52,8 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES emscripten
 )
 
+link_libraries(stdc++)
+
 FetchContent_MakeAvailable(spdlog glm earcut tinynurbs CDT fast_float emscripten)
 
 include_directories(
@@ -76,6 +79,9 @@ project(
 # ---- Set C++ standard ----
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS Off)
+
+add_compile_options(-Wno-narrowing)
 
 # ---- Target parameters ----
 set(WebIfcDll_lib_name "WebIfcDll")
